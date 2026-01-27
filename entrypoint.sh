@@ -8,13 +8,6 @@ echo "Applying database migrations..."
 python manage.py migrate --noinput --settings=config.settings.production
 
 
-# Create superuser ONLY if env vars exist
-if [ "$DJANGO_SU_NAME" ]; then
-  echo "Creating superuser (if not exists)..."
-  python scripts/create_superuser.py
-fi
-
-
 
 # Collect static files
 echo "Collecting static files..."
