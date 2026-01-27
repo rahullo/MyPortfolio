@@ -2,6 +2,7 @@
 Django==5.0.1
 python-decouple==3.8
 
+# Database
 
 
 # Django Extensions

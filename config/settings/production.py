@@ -4,6 +4,8 @@ Production settings for portfolio project.
 
 from .base import *
 
+ROOT_URLCONF = 'config.urls'
+
 DEBUG = True
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
