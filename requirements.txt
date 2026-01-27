@@ -2,8 +2,7 @@
 Django==5.0.1
 python-decouple==3.8
 
-# Database
-mysqlclient==2.2.1
+
 
 # Django Extensions
 django-crispy-forms==2.3
