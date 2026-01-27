@@ -8,7 +8,12 @@ ROOT_URLCONF = 'config.urls'
 
 DEBUG = True
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*').split(',')
+    
+# Add Render.com domains automatically
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Security Settings for Production
 CSRF_COOKIE_SECURE = True
