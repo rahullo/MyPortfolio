@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Experience - Rahul Lohra{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1 class="section-title">Professional Experience</h1>
+        <div class="timeline">
+            {% for exp in experiences %}
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    {{ exp.start_date|date:"M Y" }} -
+                    {% if exp.is_current %}
+                    Present
+                    {% else %}
+                    {{ exp.end_date|date:"M Y"}}
+                    {% endif %}
+                </div>
+                <h4>{{ exp.title }}</h4>
+                <p class="timeline-company">{{ exp.company }} | {{ exp.location }}</p>
+                <p>{{ exp.description }}</p>
+
+                {% if exp.highlights.all %}
+                <h5 class="mt-3">Key Achievements:</h5>
+                <ul>
+                    {% for highlight in exp.highlights.all %}
+                    <li>{{ highlight.text }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if exp.technologies.all %}
+                <div class="mt-3">
+                    <strong>Technologies:</strong><br>
+                    {% for tech in exp.technologies.all %}
+                    <span class="tech-badge">{{ tech.technology }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

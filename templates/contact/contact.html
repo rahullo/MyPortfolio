@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Contact - Rahul Lohra{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1 class="section-title">Get In Touch</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form">
+                    <p class="lead text-center mb-4">Have a question or want to work together? Feel free to reach out!
+                    </p>
+
+                    <form method="post" id="contact-form" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        {% crispy form %}
+                    </form>
+                </div>
+
+                <div class="row mt-5 text-center">
+                    <div class="col-md-4 mb-3">
+                        <i class="fas fa-envelope fa-2x text-primary mb-2"></i>
+                        <p><strong>Email</strong><br>
+                            <a href="mailto:rahullohra987@gmail.com">rahullohra987@gmail.com</a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <i class="fab fa-github fa-2x text-primary mb-2"></i>
+                        <p><strong>GitHub</strong><br>
+                            <a href="https://github.com/rahullo" target="_blank">github.com/rahullo</a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <i class="fab fa-linkedin fa-2x text-primary mb-2"></i>
+                        <p><strong>LinkedIn</strong><br>
+                            <a href="https://linkedin.com/in/rahul-lohra"
+                                target="_blank">linkedin.com/in/rahul-lohra</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

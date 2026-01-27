@@ -1,0 +1,23 @@
+# Core Django
+Django==5.0.1
+python-decouple==3.8
+
+# Database
+mysqlclient==2.2.1
+
+# Django Extensions
+django-crispy-forms==2.3
+crispy-bootstrap5==2025.6
+django-axes==6.1.1
+psycopg2-binary
+dj-database-url
+
+# Image Processing
+Pillow==10.2.0
+
+# Production Server
+gunicorn==21.2.0
+whitenoise==6.6.0
+
+# Development Tools
+django-debug-toolbar==4.2.0

@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      SECRET_KEY: "abrakadabra"
+      DEBUG: "False"
+      ALLOWED_HOSTS: "localhost,127.0.0.1"
+      DB_ENGINE: "django.db.backends.mysql"
+      DB_NAME: "portfolio_db"
+      DB_USER: "portfolio_user"
+      DB_PASSWORD: "portfolio_pass"
+      DB_HOST: "db"
+      DB_PORT: "3306"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: "portfolio_db"
+      MYSQL_USER: "portfolio_user"
+      MYSQL_PASSWORD: "portfolio_pass"
+      MYSQL_ROOT_PASSWORD: "rootpass"
+    ports:
+      - "3307:3306"

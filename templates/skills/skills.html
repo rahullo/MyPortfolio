@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Skills - Rahul Lohra{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1 class="section-title">Technical Skills</h1>
+        {% for category in skill_categories %}
+        <div class="skill-category mb-5">
+            <h3><i class="fas {{ category.icon }} text-primary"></i> {{ category.name }}</h3>
+            <div class="row">
+                {% for skill in category.skills.all %}
+                <div class="col-md-6 skill-item">
+                    <div class="skill-name">
+                        <span>{{ skill.name }}</span>
+                        <span class="text-primary">{{ skill.proficiency }}%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{ skill.proficiency }}%"
+                            aria-valuenow="{{ skill.proficiency }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

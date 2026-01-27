@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Education - Rahul Lohra{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1 class="section-title">Education</h1>
+        <div class="row g-4">
+            {% for edu in education_list %}
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">{{ edu.degree }}</h4>
+                        <h5>{{ edu.institution }}</h5>
+                        <p class="text-muted">{{ edu.location }}</p>
+                        <p><strong>Field:</strong> {{ edu.field }}</p>
+                        <p><strong>CGPA:</strong> {{ edu.cgpa }} / {{ edu.max_cgpa }}</p>
+                        <p><strong>Duration:</strong> {{ edu.start_date|date:"M Y" }} - {{ edu.end_date|date:"M Y" }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

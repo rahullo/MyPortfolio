@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ project.title }} - Rahul Lohra{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'core:home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'projects:project_list' %}">Projects</a></li>
+                <li class="breadcrumb-item active">{{ project.title }}</li>
+            </ol>
+        </nav>
+
+        <h1 class="mb-4">{{ project.title }}</h1>
+
+        {% if project.featured_image %}
+        <img src="{{ project.featured_image.url }}" class="img-fluid rounded shadow-lg mb-4" alt="{{ project.title }}">
+        {% endif %}
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h3>About This Project</h3>
+                <div class="lead">{{ project.detailed_description|linebreaks }}</div>
+
+                {% if project.features.all %}
+                <h3 class="mt-5">Key Features</h3>
+                <ul class="list-group list-group-flush">
+                    {% for feature in project.features.all %}
+                    <li class="list-group-item">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        {{ feature.feature }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Project Details</h5>
+
+                        <p><strong>Duration:</strong><br>
+                            {{ project.start_date|date:"M Y" }} - {% if project.end_date %}{{ project.end_date|date:"M
+                            Y" }}{% else %}Present{% endif %}</p>
+
+                        <p><strong>Tech Stack:</strong><br>
+                            {% for tech in tech_stack_list %}
+                            <span class="tech-badge">{{ tech }}</span>
+                            {% endfor %}
+                        </p>
+
+                        {% if project.github_url %}
+                        <a href="{{ project.github_url }}" class="btn btn-primary w-100 mb-2" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                        {% endif %}
+
+                        {% if project.live_url %}
+                        <a href="{{ project.live_url }}" class="btn btn-success w-100" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
